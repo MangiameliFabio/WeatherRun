@@ -6,3 +6,5 @@ class_name Character
 func _ready() -> void:
 	Sprite.animation = "Snow"
 	Sprite.play()
+	
+	

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c24sveq21xmu1"]
+
+[ext_resource type="Texture2D" uid="uid://dnvu2ldvkyh3" path="res://Sprites/rainfall,snowfall etc/Sun_sprite.png" id="1_42ly3"]
+[ext_resource type="Script" path="res://Scripts/moveObj.gd" id="1_g2iko"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svucf"]
+atlas = ExtResource("1_42ly3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gry7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svucf")
+}],
+"loop": false,
+"name": &"Condition",
+"speed": 5.0
+}]
+
+[node name="Sun" type="Area2D" node_paths=PackedStringArray("Sprite")]
+script = ExtResource("1_g2iko")
+Weather = 1
+Sprite = NodePath("AnimatedSprite2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-4, -140, -148, 149, -37, 150, 107, -139)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4.688, 4.688)
+sprite_frames = SubResource("SpriteFrames_4gry7")
+animation = &"Condition"

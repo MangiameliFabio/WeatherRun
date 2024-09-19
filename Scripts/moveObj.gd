@@ -8,7 +8,7 @@ enum WeatherType{
 }
 
 @export var Weather : WeatherType
-@export var Sprite : Sprite2D
+@export var Sprite : AnimatedSprite2D
 
 # Speed of the clouds movement
 var speed = 150.0

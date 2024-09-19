@@ -2,7 +2,9 @@ extends Node2D
 
 # Preload the object scenes 
 var object_scenes = [
-	preload("res://clouds.tscn")
+	preload("res://clouds.tscn"),
+	preload("res://Sun.tscn"),
+	preload("res://snow.tscn")
 ]
 
 # Spawn rate
@@ -23,12 +25,11 @@ func spawn_random_object():
 	var object_scene = object_scenes[randi() % object_scenes.size()]
 	
 	var instance : WeatherObj = object_scene.instantiate()
-
 	var sprite = instance.Sprite
-	var sprite_size = sprite.texture.get_size()
+	var sprite_size = sprite.get_sprite_frames().get_frame_texture("Condition",0).get_size()
 	
 	# Set the object's position
-	instance.position = Vector2(get_viewport_rect().size.x + sprite_size.x / 2,  get_viewport_rect().size.y / 4 )
+	instance.position = Vector2(get_viewport_rect().size.x + sprite_size.x / 2,  get_viewport_rect().size.y / 3 )
 	
 	# Add the instance to the scene
 	add_child(instance)
