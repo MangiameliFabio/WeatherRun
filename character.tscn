@@ -1,10 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://vw727ntf6pbg"]
+[gd_scene load_steps=16 format=3 uid="uid://vw727ntf6pbg"]
 
 [ext_resource type="Script" path="res://Character.gd" id="1_3mdqs"]
+[ext_resource type="Texture2D" uid="uid://buoeaxklech5c" path="res://Sprites/kaj_rain_sprite.png" id="2_48x7v"]
 [ext_resource type="Texture2D" uid="uid://b00fwegsgo48" path="res://Sprites/kaj_winter_sprite.png" id="2_52iws"]
+[ext_resource type="Texture2D" uid="uid://de8bgx5sbw260" path="res://Sprites/kaj_summer_sprite.png" id="4_7ln4s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdeil"]
 size = Vector2(144, 252)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kkqy"]
+atlas = ExtResource("2_48x7v")
+region = Rect2(0, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1eqb"]
+atlas = ExtResource("2_48x7v")
+region = Rect2(16, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrxcw"]
+atlas = ExtResource("2_48x7v")
+region = Rect2(32, 0, 16, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h5hpw"]
 atlas = ExtResource("2_52iws")
@@ -18,8 +32,34 @@ region = Rect2(16, 0, 16, 20)
 atlas = ExtResource("2_52iws")
 region = Rect2(32, 0, 16, 20)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_okjxn"]
+atlas = ExtResource("4_7ln4s")
+region = Rect2(0, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r07kn"]
+atlas = ExtResource("4_7ln4s")
+region = Rect2(16, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xswb"]
+atlas = ExtResource("4_7ln4s")
+region = Rect2(32, 0, 16, 20)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ee75u"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kkqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1eqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrxcw")
+}],
+"loop": true,
+"name": &"Rain",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h5hpw")
@@ -33,6 +73,20 @@ animations = [{
 "loop": true,
 "name": &"Snow",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okjxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r07kn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xswb")
+}],
+"loop": true,
+"name": &"Sun",
+"speed": 5.0
 }, {
 "frames": [],
 "loop": true,
@@ -52,4 +106,5 @@ shape = SubResource("RectangleShape2D_wdeil")
 texture_filter = 1
 scale = Vector2(18.0625, 18.0625)
 sprite_frames = SubResource("SpriteFrames_ee75u")
-animation = &"Snow"
+animation = &"Sun"
+frame_progress = 0.318811

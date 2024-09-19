@@ -1,52 +1,39 @@
-[gd_scene load_steps=8 format=3 uid="uid://y48on0s16df4"]
+[gd_scene load_steps=7 format=3 uid="uid://y48on0s16df4"]
 
 [ext_resource type="Script" path="res://Scripts/character_movement.gd" id="1_bw3kw"]
-[ext_resource type="Texture2D" uid="uid://dk1a21nac8m7u" path="res://Sprites/free asset pack/Free Platform Game Assets/Platform Game Assets/Background/png/1920x1080/Background/Background.png" id="1_i2r13"]
 [ext_resource type="Script" path="res://Scripts/backgroundmoving.gd" id="2_7kgul"]
-[ext_resource type="PackedScene" path="res://surface.tscn" id="2_sbly8"]
 [ext_resource type="PackedScene" uid="uid://vw727ntf6pbg" path="res://character.tscn" id="3_dw01l"]
+[ext_resource type="Texture2D" uid="uid://e0yknok02q3s" path="res://Sprites/house_sprites.png" id="3_pefc5"]
 [ext_resource type="Script" path="res://Scripts/weather_change.gd" id="8_cqaua"]
 [ext_resource type="Script" path="res://Scripts/timeController.gd" id="9_te0gg"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_bw3kw")
 
-[node name="BackgroundManager" type="Node2D" parent="."]
+[node name="BackgroundManager" type="Node2D" parent="." node_paths=PackedStringArray("Background1", "Background2")]
 script = ExtResource("2_7kgul")
-
-[node name="Background2" type="Sprite2D" parent="BackgroundManager"]
-position = Vector2(1733, 326)
-scale = Vector2(0.603125, 0.60463)
-texture = ExtResource("1_i2r13")
+Background1 = NodePath("Background1")
+Background2 = NodePath("Background2")
 
 [node name="Background1" type="Sprite2D" parent="BackgroundManager"]
-position = Vector2(576, 325.5)
-scale = Vector2(0.603125, 0.60463)
-texture = ExtResource("1_i2r13")
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = ExtResource("3_pefc5")
+centered = false
+
+[node name="Background2" type="Sprite2D" parent="BackgroundManager"]
+texture_filter = 1
+position = Vector2(7680, -5.96046e-08)
+scale = Vector2(10, 10)
+texture = ExtResource("3_pefc5")
+centered = false
 
 [node name="Character" parent="." instance=ExtResource("3_dw01l")]
-position = Vector2(259, 306)
+position = Vector2(361, 510)
 scale = Vector2(0.5, 0.5)
 
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource("8_cqaua")
-
-[node name="StaticObjects" type="Node2D" parent="."]
-
-[node name="Grass2" parent="StaticObjects" instance=ExtResource("2_sbly8")]
-position = Vector2(127, 522)
-
-[node name="Grass" parent="StaticObjects" instance=ExtResource("2_sbly8")]
-position = Vector2(381, 523)
-
-[node name="Grass3" parent="StaticObjects" instance=ExtResource("2_sbly8")]
-position = Vector2(637, 523)
-
-[node name="Grass4" parent="StaticObjects" instance=ExtResource("2_sbly8")]
-position = Vector2(891, 523)
-
-[node name="Grass5" parent="StaticObjects" instance=ExtResource("2_sbly8")]
-position = Vector2(1145, 523)
 
 [node name="TimeManager" type="Node2D" parent="."]
 script = ExtResource("9_te0gg")
