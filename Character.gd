@@ -2,10 +2,12 @@ extends Area2D
 class_name Character
 
 @export var Sprite : AnimatedSprite2D
-
-var clothing_type : WeatherObj.WeatherType = WeatherObj.WeatherType.SUN
+@export var Happiness : float
+var clothing_type : WeatherObj.WeatherType = WeatherObj.WeatherType.SNOW
 
 func _ready() -> void:
+	await get_tree().process_frame
+	Global.GameInstance.Player = self
 	Sprite.animation = "Snow"
 	Sprite.play()
 

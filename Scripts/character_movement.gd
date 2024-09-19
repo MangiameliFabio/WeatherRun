@@ -1,7 +1,7 @@
 extends Node2D
 class_name Game
 var current_index = 0
-
+var Player : Character
 func _ready():
 	Global.GameInstance = self
 

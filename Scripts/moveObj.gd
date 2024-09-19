@@ -23,5 +23,11 @@ func _process(delta):
 	
 	for body in get_overlapping_areas():
 		if body is Character:
-			print("Hit")
+			if body.clothing_type == Weather:
+				print("Safe")
+			else:
+				body.Happiness -= delta * 2
+				print(int(body.Happiness), " Lose points")
+
+				
 	

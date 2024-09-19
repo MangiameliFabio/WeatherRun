@@ -23,8 +23,7 @@ func _process(delta: float):
 	Background1.position.x -= speed * delta
 	Background2.position.x -= speed * delta
 	
-	
-	print(Background1.position.x + Background1.texture.get_width() * 10)
+
 	# Reset position when one background goes off-screen
 	if 0 > Background1.position.x + Background1.texture.get_width() * 10:
 		Background1.position.x = Background2.position.x + Background2.texture.get_width()
