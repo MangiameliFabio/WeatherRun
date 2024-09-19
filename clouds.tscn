@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq0f1sya2p3vr"]
+
+[ext_resource type="Script" path="res://Scripts/moveObj.gd" id="1_8jtx3"]
+[ext_resource type="Texture2D" uid="uid://cye7iefly3stl" path="res://Sprites/rainfall,snowfall etc/clouds.png" id="1_ncb8w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvti6"]
+size = Vector2(302, 140)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_8jtx3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_ncb8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4, -3)
+shape = SubResource("RectangleShape2D_pvti6")

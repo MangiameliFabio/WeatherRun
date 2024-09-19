@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3dk3gbu38824"]
+
+[ext_resource type="Texture2D" uid="uid://cpettvw37s4x7" path="res://Sprites/Player/Sleeping-Kittens-black/black-kitten1.png" id="2_cpt0a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdeil"]
+size = Vector2(263, 215)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_cpt0a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.500004, 4.5)
+shape = SubResource("RectangleShape2D_wdeil")
