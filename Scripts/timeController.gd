@@ -22,9 +22,6 @@ func _process(delta: float) -> void:
 	
 	happiness_label.text = "Happiness %d" % Global.GameInstance.Player.Happiness
 
-
-
-
 func _on_Timer_timeout():
 	Global.GameInstance.finish_game()
 	print("Timer finished!")

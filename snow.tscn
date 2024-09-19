@@ -31,11 +31,12 @@ Weather = 2
 Sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-85, 140)
-polygon = PackedVector2Array(82, -283, -65, 7, 51, 9, 194, -281)
+position = Vector2(68, 638)
+polygon = PackedVector2Array(242, -618, -68, 2, 172, 2, 482, -618)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(4.6875, 4.6875)
+scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_snrtc")
 animation = &"Condition"
+centered = false

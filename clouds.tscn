@@ -35,12 +35,13 @@ script = ExtResource("1_8jtx3")
 Sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-85, 140)
-polygon = PackedVector2Array(63, -217, -52, 11, 65, 10, 179, -216)
+position = Vector2(236, 459)
+polygon = PackedVector2Array(35, -301, -205, 180, 35, 180, 276, -301)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(4.6875, 4.6875)
+scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_snrtc")
 animation = &"Condition"
 frame_progress = 0.430006
+centered = false

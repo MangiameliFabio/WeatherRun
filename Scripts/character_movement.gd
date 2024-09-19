@@ -1,5 +1,8 @@
 extends Node2D
 class_name Game
+
+@export var TimerManager : Node2D
+
 var current_index = 0
 var Player : Character
 func _ready():

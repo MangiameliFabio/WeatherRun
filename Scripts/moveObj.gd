@@ -13,9 +13,12 @@ enum WeatherType{
 # Speed of the clouds movement
 var speed = 150.0
 
+func  _ready() -> void:
+	Sprite.play()
+
 func _process(delta):
 	# Move clouds to the left
-	position.x -= speed * delta
+	position.x -= speed * delta * max((60 - Global.GameInstance.TimerManager.time_left) * 0.1, 1)
 
 	# Check if the object has left the screen 
 	if position.x < -get_viewport_rect().size.x: # -1000 outside the screen
