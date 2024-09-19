@@ -3,14 +3,14 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$CenterContainer/VBoxContainer/MarginContainer2/Label2.text = "Your Score: " + str(Global.happiness)
+	$CenterContainer/VBoxContainer/MarginContainer2/Label2.text = "Your Score: " + str(Global.GameInstance.happiness)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func _on_restart_pressed():
-	TransitionManager.change_scene("res://Scenes/Main.tscn")
+	TransitionManager.change_scene("res://Scenes/mainscene.tscn")
 
 func _on_main_menu_pressed():
 	TransitionManager.change_scene("res://Scenes/MainMenu.tscn")

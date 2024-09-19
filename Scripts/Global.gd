@@ -1,3 +1,3 @@
 extends Node
 
-var happiness : float
+var GameInstance : Game

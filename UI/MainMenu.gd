@@ -10,7 +10,7 @@ func _process(delta):
 	pass
 
 func _on_start_pressed():
-	TransitionManager.change_scene("res://Main.tscn")
+	TransitionManager.change_scene("res://mainscene.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()

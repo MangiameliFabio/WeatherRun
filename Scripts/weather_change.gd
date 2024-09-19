@@ -2,9 +2,7 @@ extends Node2D
 
 # Preload the object scenes 
 var object_scenes = [
-	preload("res://rain.tscn"),
-	preload("res://clouds.tscn"),
-	preload("res://rain.tscn")
+	preload("res://clouds.tscn")
 ]
 
 # Spawn rate
@@ -24,9 +22,9 @@ func spawn_random_object():
 	# Select a random object scene
 	var object_scene = object_scenes[randi() % object_scenes.size()]
 	
-	var instance = object_scene.instantiate()
+	var instance : WeatherObj = object_scene.instantiate()
 
-	var sprite = instance.get_node("StaticBody2D/Sprite2D")
+	var sprite = instance.Sprite
 	var sprite_size = sprite.texture.get_size()
 	
 	# Set the object's position
@@ -34,6 +32,3 @@ func spawn_random_object():
 	
 	# Add the instance to the scene
 	add_child(instance)
-
-	# Start the object's movement to the left
-	instance.set_script(preload("res://Scripts/moveObj.gd"))

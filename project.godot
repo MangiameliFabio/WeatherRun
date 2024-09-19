@@ -49,6 +49,10 @@ switch={
 "deadzone": 0.5,
 "events": []
 }
+[autoload]
+
+Global="*res://Scripts/Global.gd"
+TransitionManager="*res://UI/TransitionScene.tscn"
 
 [rendering]
 

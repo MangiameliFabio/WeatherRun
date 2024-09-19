@@ -29,11 +29,12 @@ theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Wrapper"]
 layout_mode = 2
+theme_override_constants/separation = 25
 
 [node name="Label" type="Label" parent="Wrapper/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_63pss")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
 text = "The Danish Way"
 horizontal_alignment = 2
 vertical_alignment = 1

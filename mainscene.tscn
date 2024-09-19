@@ -1,58 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://bf7ihbwj11o8n"]
+[gd_scene load_steps=8 format=3 uid="uid://y48on0s16df4"]
 
 [ext_resource type="Script" path="res://Scripts/character_movement.gd" id="1_bw3kw"]
 [ext_resource type="Texture2D" uid="uid://dk1a21nac8m7u" path="res://Sprites/free asset pack/Free Platform Game Assets/Platform Game Assets/Background/png/1920x1080/Background/Background.png" id="1_i2r13"]
-[ext_resource type="PackedScene" uid="uid://cpvy0u32sim4h" path="res://surface.tscn" id="2_sbly8"]
-[ext_resource type="PackedScene" uid="uid://d3dk3gbu38824" path="res://character.tscn" id="3_dw01l"]
-[ext_resource type="Texture2D" uid="uid://b6pyeost3kwik" path="res://Sprites/Player/Sleeping-Kittens-white/white-kitten3.png" id="5_x8pka"]
-[ext_resource type="Texture2D" uid="uid://dnctwwjo330nr" path="res://Sprites/Player/Sleeping-Kittens-white/white-kitten5.png" id="6_285m8"]
-[ext_resource type="Texture2D" uid="uid://cid5se774wmjb" path="res://Sprites/Player/Sleeping-Kittens-white/white-kitten4.png" id="7_vij88"]
+[ext_resource type="Script" path="res://Scripts/backgroundmoving.gd" id="2_7kgul"]
+[ext_resource type="PackedScene" path="res://surface.tscn" id="2_sbly8"]
+[ext_resource type="PackedScene" uid="uid://vw727ntf6pbg" path="res://character.tscn" id="3_dw01l"]
 [ext_resource type="Script" path="res://Scripts/weather_change.gd" id="8_cqaua"]
 [ext_resource type="Script" path="res://Scripts/timeController.gd" id="9_te0gg"]
-
-[sub_resource type="GDScript" id="GDScript_qkdw2"]
-script/source = "extends Node2D
-
-# Speed of the background movement
-var speed: float = 200.0
-
-# Backgrounds inititialization
-var background1
-var background2
-var initial_position1
-var initial_position2
-
-func _ready():
-	# Assign the background sprites 
-	background1 = $Background1
-	background2 = $Background2
-	initial_position1 = background1.position.x
-	initial_position2 = background2.position.x
-	
-
-func _process(delta: float):
-	# Move the backgrounds to the left
-	background1.position.x -= speed * delta
-	background2.position.x -= speed * delta
-	print(get_viewport_rect().size.x)
-	print(initial_position2, \" initial pos\")
-
-
-	# Reset position when one background goes off-screen
-	if background1.position.x < -get_viewport_rect().size.x / 2:
-		background1.position.x = initial_position2
-	if background2.position.x < -get_viewport_rect().size.x / 2:
-		background2.position.x = initial_position2
-		
-
-	
-"
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_bw3kw")
 
 [node name="BackgroundManager" type="Node2D" parent="."]
-script = SubResource("GDScript_qkdw2")
+script = ExtResource("2_7kgul")
 
 [node name="Background2" type="Sprite2D" parent="BackgroundManager"]
 position = Vector2(1733, 326)
@@ -65,23 +25,8 @@ scale = Vector2(0.603125, 0.60463)
 texture = ExtResource("1_i2r13")
 
 [node name="Character" parent="." instance=ExtResource("3_dw01l")]
-position = Vector2(685, 343)
+position = Vector2(259, 306)
 scale = Vector2(0.5, 0.5)
-
-[node name="Object1" type="Sprite2D" parent="Character"]
-position = Vector2(8, -158)
-scale = Vector2(0.103095, 0.11487)
-texture = ExtResource("5_x8pka")
-
-[node name="Object2" type="Sprite2D" parent="Character"]
-position = Vector2(-2, -160)
-scale = Vector2(0.0926488, 0.140295)
-texture = ExtResource("6_285m8")
-
-[node name="Object3" type="Sprite2D" parent="Character"]
-position = Vector2(6, -164)
-scale = Vector2(0.0901804, 0.123616)
-texture = ExtResource("7_vij88")
 
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource("8_cqaua")
