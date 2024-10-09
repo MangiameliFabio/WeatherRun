@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c24sveq21xmu1"]
+[gd_scene load_steps=6 format=3 uid="uid://c24sveq21xmu1"]
 
 [ext_resource type="Texture2D" uid="uid://dnvu2ldvkyh3" path="res://Sprites/rainfall,snowfall etc/Sun_sprite.png" id="1_42ly3"]
 [ext_resource type="Script" path="res://Scripts/moveObj.gd" id="1_g2iko"]
+[ext_resource type="AudioStream" uid="uid://hvjgk6wtlj5o" path="res://Aduio/birds-chirping-75156.mp3" id="3_0ur4w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_svucf"]
 atlas = ExtResource("1_42ly3")
@@ -18,10 +19,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Sun" type="Area2D" node_paths=PackedStringArray("Sprite")]
+[node name="Sun" type="Area2D" node_paths=PackedStringArray("Sprite", "AudioPlayer")]
 script = ExtResource("1_g2iko")
 Weather = 1
 Sprite = NodePath("AnimatedSprite2D")
+AudioPlayer = NodePath("AudioStreamPlayer")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(317, 321)
@@ -34,3 +36,7 @@ scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_4gry7")
 animation = &"Condition"
 centered = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0ur4w")
+bus = &"SoundEffect"

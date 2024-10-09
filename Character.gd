@@ -3,12 +3,14 @@ class_name Character
 
 @export var Sprite : AnimatedSprite2D
 @export var Happiness : float
+@export var AutoChange : bool = false
 var clothing_type : WeatherObj.WeatherType = WeatherObj.WeatherType.SNOW
 
 func _ready() -> void:
 	await get_tree().process_frame
-	Global.GameInstance.Player = self
-	Sprite.animation = "Snow"
+	if Global.GameInstance:
+		Global.GameInstance.Player = self
+	Sprite.animation = "Sun"
 	Sprite.play()
 
 func _process(delta: float) -> void:
@@ -25,3 +27,4 @@ func _process(delta: float) -> void:
 			WeatherObj.WeatherType.RAIN: 
 				Sprite.animation = "Rain"
 		Sprite.play()
+		$AudioStreamPlayer.play()

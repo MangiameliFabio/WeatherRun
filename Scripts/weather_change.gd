@@ -4,17 +4,17 @@ extends Node2D
 @export var object_scenes : Array[PackedScene]
 
 # Spawn rate
-var spawn_interval = 0.0
-var spawn_timer = 0.0
-var last_rand_value = 0
+@export var SpawnInterval : float = 5.0
+
+var last_rand_value : float = 0.0
+var current_spawn_interval : float = 2.0
 
 func _process(delta):
-	spawn_timer += delta
+	current_spawn_interval -= delta
 # Spawning mechanic
-	if spawn_timer >= spawn_interval:
+	if current_spawn_interval <= 0:
 		spawn_random_object()
-		spawn_timer = 0.0
-		spawn_interval = 1.5 * max(Global.GameInstance.TimerManager.time_left * 0.1, 2)
+		current_spawn_interval = remap(Global.GameInstance.difficulty_factor, 1, 3, SpawnInterval, 1)
 
 # Function to spawn a random object
 func spawn_random_object():

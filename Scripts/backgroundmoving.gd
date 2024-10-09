@@ -25,9 +25,9 @@ func _process(delta: float):
 	
 
 	# Reset position when one background goes off-screen
-	if 0 > Background1.position.x + Background1.texture.get_width() * 10:
+	if 0 > Background1.position.x + Background1.texture.get_width() * 10 + 500:
 		Background1.position.x = Background2.position.x + Background2.texture.get_width()
-	if 0 > Background2.position.x + Background2.texture.get_width() * 10:
+	if 0 > Background2.position.x + Background2.texture.get_width() * 10 + 500:
 		Background2.position.x = Background1.position.x + Background1.texture.get_width()
 		
 

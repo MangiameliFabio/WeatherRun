@@ -11,14 +11,16 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hin0a"]
 
 [resource]
-Button/colors/font_color = Color(0, 0.725347, 0.792318, 1)
-Button/colors/font_hover_color = Color(1.44392e-06, 0.34613, 0.380393, 1)
-Button/colors/font_pressed_color = Color(0.588235, 0.254902, 0, 1)
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.447059, 0.447059, 0.447059, 1)
+Button/colors/font_pressed_color = Color(0.446777, 0.446777, 0.446777, 1)
+Button/constants/outline_size = 10
 Button/font_sizes/font_size = 28
 Button/fonts/font = ExtResource("1_rrav3")
 Button/styles/focus = SubResource("StyleBoxEmpty_8488y")
 Button/styles/hover = SubResource("StyleBoxEmpty_tubn0")
 Button/styles/normal = SubResource("StyleBoxEmpty_b8he0")
 Button/styles/pressed = SubResource("StyleBoxEmpty_hin0a")
-Label/colors/font_color = Color(0, 0.72549, 0.792157, 1)
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/constants/outline_size = 5
 Label/fonts/font = ExtResource("1_rrav3")

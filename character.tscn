@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://vw727ntf6pbg"]
+[gd_scene load_steps=17 format=3 uid="uid://vw727ntf6pbg"]
 
 [ext_resource type="Script" path="res://Character.gd" id="1_3mdqs"]
 [ext_resource type="Texture2D" uid="uid://buoeaxklech5c" path="res://Sprites/kaj_rain_sprite.png" id="2_48x7v"]
 [ext_resource type="Texture2D" uid="uid://b00fwegsgo48" path="res://Sprites/kaj_winter_sprite.png" id="2_52iws"]
 [ext_resource type="Texture2D" uid="uid://de8bgx5sbw260" path="res://Sprites/kaj_summer_sprite.png" id="4_7ln4s"]
+[ext_resource type="AudioStream" uid="uid://dr2k4lgy1kxfk" path="res://Aduio/clothes-drop-2-40202.mp3" id="5_8xmpd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdeil"]
 size = Vector2(144, 252)
@@ -58,7 +59,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Rain",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -72,7 +73,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Snow",
-"speed": 10.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -86,7 +87,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Sun",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [],
 "loop": true,
@@ -106,5 +107,8 @@ shape = SubResource("RectangleShape2D_wdeil")
 texture_filter = 1
 scale = Vector2(18.0625, 18.0625)
 sprite_frames = SubResource("SpriteFrames_ee75u")
-animation = &"Sun"
-frame_progress = 0.318811
+animation = &"Rain"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8xmpd")
+bus = &"SoundEffect"

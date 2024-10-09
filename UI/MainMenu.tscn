@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6welye8ssu6d"]
+[gd_scene load_steps=7 format=3 uid="uid://b6welye8ssu6d"]
 
 [ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_k5s62"]
 [ext_resource type="Theme" uid="uid://3sybyyua0p6w" path="res://UI/ui_theme.tres" id="2_63pss"]
 [ext_resource type="AudioStream" uid="uid://dap71fc2d8qpe" path="res://Aduio/simple-relaxing-guitar-loop-60828.mp3" id="3_65s1v"]
+[ext_resource type="Script" path="res://Scripts/backgroundmoving.gd" id="4_5payq"]
+[ext_resource type="Texture2D" uid="uid://e0yknok02q3s" path="res://Sprites/house_sprites.png" id="5_gmc0w"]
+[ext_resource type="PackedScene" uid="uid://vw727ntf6pbg" path="res://character.tscn" id="6_is6xf"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,19 +16,34 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k5s62")
 
+[node name="BackgroundManager" type="Node2D" parent="." node_paths=PackedStringArray("Background1", "Background2")]
+script = ExtResource("4_5payq")
+Background1 = NodePath("Background1")
+Background2 = NodePath("Background2")
+
+[node name="Background1" type="Sprite2D" parent="BackgroundManager"]
+texture_filter = 1
+scale = Vector2(10.125, 10.125)
+texture = ExtResource("5_gmc0w")
+centered = false
+
+[node name="Background2" type="Sprite2D" parent="BackgroundManager"]
+texture_filter = 1
+position = Vector2(7776, -5.96046e-08)
+scale = Vector2(10.125, 10.125)
+texture = ExtResource("5_gmc0w")
+centered = false
+
 [node name="Wrapper" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -555.0
-offset_top = -313.0
+offset_left = -722.0
+offset_bottom = 313.0
 grow_horizontal = 0
-grow_vertical = 0
+theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Wrapper"]
 layout_mode = 2
@@ -34,6 +52,7 @@ theme_override_constants/separation = 25
 [node name="Label" type="Label" parent="Wrapper/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_63pss")
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 48
 text = "The Danish Way"
 horizontal_alignment = 2
@@ -41,7 +60,7 @@ vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Wrapper/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 45
+theme_override_constants/margin_top = 2
 
 [node name="Start" type="Button" parent="Wrapper/VBoxContainer"]
 layout_mode = 2
@@ -49,15 +68,26 @@ theme = ExtResource("2_63pss")
 text = "Start"
 alignment = 2
 
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Wrapper/VBoxContainer/Start"]
+
 [node name="Quit" type="Button" parent="Wrapper/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_63pss")
 text = "Quit"
 alignment = 2
 
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Wrapper/VBoxContainer/Quit"]
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_65s1v")
+volume_db = -2.0
 autoplay = true
+bus = &"Music"
+
+[node name="Character" parent="." instance=ExtResource("6_is6xf")]
+position = Vector2(361, 510)
+scale = Vector2(0.5, 0.5)
+Happiness = 100.0
 
 [connection signal="pressed" from="Wrapper/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Wrapper/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

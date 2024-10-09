@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ditvlfuwfbtgx"]
+[gd_scene load_steps=7 format=3 uid="uid://ditvlfuwfbtgx"]
 
 [ext_resource type="Script" path="res://Scripts/moveObj.gd" id="1_ltpwd"]
 [ext_resource type="Texture2D" uid="uid://b5r13pow612mw" path="res://Sprites/rainfall,snowfall etc/snow_sprite.png" id="2_5virj"]
+[ext_resource type="AudioStream" uid="uid://bbgiwsp3563on" path="res://Aduio/wind__artic__cold-6195.mp3" id="3_dvwgl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ig1vh"]
 atlas = ExtResource("2_5virj")
@@ -25,10 +26,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="SnowCloud" type="Area2D" node_paths=PackedStringArray("Sprite")]
+[node name="SnowCloud" type="Area2D" node_paths=PackedStringArray("Sprite", "AudioPlayer")]
 script = ExtResource("1_ltpwd")
 Weather = 2
 Sprite = NodePath("AnimatedSprite2D")
+AudioPlayer = NodePath("AudioStreamPlayer")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(68, 638)
@@ -40,3 +42,7 @@ scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_snrtc")
 animation = &"Condition"
 centered = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dvwgl")
+bus = &"SoundEffect"
